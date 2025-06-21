@@ -9,8 +9,12 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT;
 
+app.use('/api', (_, res) => {
+    res.send("API Service");
+});
+
 connectDB().then(() => {
         app.listen(PORT, () => {
-        console.log(`Server running on http://localhost:${PORT}`);
+        console.log(`Backend server running at http://localhost:${PORT}/api`);
     });    
 });
